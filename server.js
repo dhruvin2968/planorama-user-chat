@@ -9,12 +9,19 @@ app.use(cors());
 
 // HTTP server + socket layer
 const server = http.createServer(app);
+// const io = new Server(server, {
+//   cors: { 
+//     origin: ["http://localhost:3000", "http://localhost:3001"], // Common React dev server ports
+//     methods: ["GET", "POST"],
+//   },
+// });
 const io = new Server(server, {
   cors: { 
-    origin: ["http://localhost:3000", "http://localhost:3001"], // Common React dev server ports
+    origin: "*",  // <-- allow all origins
     methods: ["GET", "POST"],
   },
 });
+
 
 // Track active users
 let users = {};
